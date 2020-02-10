@@ -3,7 +3,9 @@ import { render } from 'react-dom'
 import cms from 'netlify-cms-app'
 import { Widget as IdWidget } from '@ncwidgets/id'
 import { Widget as ReorderWidget, createWidget } from '@ncwidgets/reorder'
+import { Widget as I18nWidget } from '@ncwidgets/i18nize'
 import { Widget as FileRelationWidget } from '@ncwidgets/file-relation'
+import { Widget as ReorderWidget, createControl } from '@ncwidgets/reorder'
 import repoData from './static/data'
 
 const createRoot = () => {
@@ -37,6 +39,7 @@ const CMS = () => {
     window.repoFiles = repoData
 
     cms.registerWidget(IdWidget)
+    cms.registerWidget(I18nWidget)
     cms.registerWidget(ReorderWidget)
     cms.registerWidget({
       name: 'custom-reorder',
