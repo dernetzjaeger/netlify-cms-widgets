@@ -22,7 +22,7 @@ module.exports = {
           options: {
             sourceType: 'module',
             presets: [
-              ['@babel/preset-env', { targets: { esmodules: true }}], 
+              ['@babel/preset-env', { targets: { esmodules: true }}],
               '@babel/preset-react'
             ],
           }
@@ -40,6 +40,6 @@ module.exports = {
   devServer: {
     contentBase: distDir,
     compress: true,
-    port: 9000,
+    port: 9001,
   }
 }

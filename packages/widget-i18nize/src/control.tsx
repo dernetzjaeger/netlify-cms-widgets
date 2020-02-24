@@ -48,15 +48,6 @@ interface ControlState {
 export class Control extends React.Component<WidgetProps, ControlState> {
   public componentValidate = {}
 
-  public validate = () => {
-    console.log('----called----')
-    const { field } = this.props
-    const langs: List<string> = field.get('langs')
-    langs.forEach(lang => {
-      this.componentValidate[lang]()
-    })
-  }
-
   public state = {
     selectedLang: '',
     collapsed: true,
@@ -92,8 +83,8 @@ export class Control extends React.Component<WidgetProps, ControlState> {
     const {
       field: rootField,
       value: rootValue,
-      editorControl: EditorControl, 
-      onChangeObject: onChange, 
+      editorControl: EditorControl,
+      onChangeObject: onChange,
       onValidateObject: onValidate,
       metadata,
       fieldsErrors,
@@ -113,14 +104,14 @@ export class Control extends React.Component<WidgetProps, ControlState> {
       .set('widget', widgetType)
       .set('fields', subFields)
 
-    const value = rootValue && Map.isMap(rootValue) 
-      ? rootValue.get(lang) 
+    const value = rootValue && Map.isMap(rootValue)
+      ? rootValue.get(lang)
       : rootValue
 
     return (
       <EditorControl
         key={lang}
-        fieldsMetaData={metadata} 
+        fieldsMetaData={metadata}
         processControlRef={controlRef && controlRef.bind(this)}
         {...{
           onChange,
@@ -166,7 +157,7 @@ export class Control extends React.Component<WidgetProps, ControlState> {
           </button>
         </MenuWrapper>
         <FieldWrapper collapsed={collapsed}>
-          {collapsed 
+          {collapsed
             ? this.renderField({ lang: selectedLang })
             : this.renderAllFields({ langs })
           }
